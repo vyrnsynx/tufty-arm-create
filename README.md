@@ -69,7 +69,7 @@ The FAT volume holds the apps and pictures. That is why the with-filesystem imag
 
 | File | What it is |
 | --- | --- |
-| `tufty-bw-1.28.0-3-micropython-with-filesystem.uf2` | Drag this onto the RP2350 drive. It is the whole 16 MB flash chip (family ID `absolute`), so the firmware, apps, and pictures all go back together. |
+| `tufty-bw-1.28.0-3-micropython-with-filesystem.uf2` | Drag this onto the RP2350 drive. Family ID `absolute`. It contains only the flash pages that hold data: firmware, ROMFS, and the TUFTY files. Blank pages are left out. |
 | `tufty-bw-1.28.0-3-micropython-with-filesystem.bin` | The same 16 MB image as a raw `.bin`, for `picotool load`. It loads at `0x10000000`. |
 | `TUFTY\` | Those badge folders extracted so you can look at the apps and pictures on a computer. |
 | `SHA256.txt` | Checksums for the two image files. |
@@ -132,7 +132,7 @@ Tufty has to be in BOOTSEL, with the RP2350 drive on screen. These files are for
 
 Copy `tufty-bw-1.28.0-3-micropython-with-filesystem.uf2` onto the root of the RP2350 drive. Do not drop it into a subfolder.
 
-The file is about 32 MB because a UF2 stores 256 bytes of flash in each 512-byte block. It covers `0x10000000` through `0x10FFFF00`, which is the entire 16 MB chip: firmware, the ROMFS, and the TUFTY filesystem. When the copy finishes, the RP2350 drive goes away and the badge reboots. Windows often reports that the drive disappeared. That is the flash completing, not a failed copy.
+The file is 8,088,064 bytes. A UF2 block is 512 bytes and carries 256 bytes of flash, and this file keeps only the 15,797 pages that are not blank. That is the firmware, the ROMFS, and the TUFTY files. When the copy finishes, the RP2350 drive goes away and the badge reboots. Windows often reports that the drive disappeared. That is the flash completing, not a failed copy.
 
 ### Or flash the bin with picotool
 
@@ -191,6 +191,8 @@ picotool save -a -v .\tufty-bw-1.28.0-3-micropython-with-filesystem.bin
 picotool uf2 convert --family absolute --platform rp2350 .\tufty-bw-1.28.0-3-micropython-with-filesystem.bin .\tufty-bw-1.28.0-3-micropython-with-filesystem.uf2
 ```
 
+`picotool uf2 convert` packs every page in the bin, including blank `0xFF` pages, so that file is about 32 MB. The UF2 shipped here drops those blank pages and is 8,088,064 bytes.
+
 ## Checksums
 
 ```
@@ -198,7 +200,7 @@ tufty-bw-1.28.0-3-micropython-with-filesystem.bin
 0EA16153920D58F0E16D19E931EDAF37210069947C5DF1A3953E36365717B055
 
 tufty-bw-1.28.0-3-micropython-with-filesystem.uf2
-2CC8E37C3E1DE376748D263D3E002F04C19079D7D7C6CDFFF6ECB7789BAB0C80
+54BB4F3A6703FFE83669FE36C508528B85301EDEE2F2DB285DFDEDFD082AEF28
 ```
 
 ```powershell
