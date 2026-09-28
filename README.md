@@ -204,3 +204,9 @@ tufty-bw-1.28.0-3-micropython-with-filesystem.uf2
 ```powershell
 Get-FileHash -Algorithm SHA256 .\tufty-bw-1.28.0-3-micropython-with-filesystem.uf2
 ```
+
+## License
+
+This repository is released under the [MIT License](LICENSE). Copyright (c) 2026 VyrnSynx.
+
+The font files under `TUFTY\ASSETS\FONTS\` stay under the SIL Open Font License. That notice is in `TUFTY\ASSETS\FONTS\LICENCES\OFL.TXT`.
