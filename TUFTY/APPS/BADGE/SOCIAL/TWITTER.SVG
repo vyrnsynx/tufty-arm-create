@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Twitter" xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+<defs><style>.cls-1{fill:#ffffff;}</style></defs>
+<path class="cls-1" id="wall-left" d="M1.29,0 15.38,7.8 88.62,112.56 83.74,120Z"/>
+<path class="cls-1" id="wall-right" d="M36.26,0 31.29,7.8 104.53,112.56 118.71,120Z"/>
+<path class="cls-1" id="cap-top" d="M1.29,0 36.26,0 31.29,7.8 15.38,7.8Z"/>
+<path class="cls-1" id="cap-bottom" d="M83.74,120 88.62,112.56 104.53,112.56 118.71,120Z"/>
+<path class="cls-1" id="stroke-upper" d="M71.17,50.81 114.89,0 104.53,0 66.57,44.12Z"/>
+<path class="cls-1" id="stroke-lower" d="M47.13,66.72 1.29,120 11.65,120 51.73,73.41Z"/>
+</svg>
